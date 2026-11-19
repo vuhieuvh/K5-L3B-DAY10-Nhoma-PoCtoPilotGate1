@@ -102,13 +102,15 @@ def _gate_refund(ctx, action):
                             f"chính sách {policy['policy_id']}: không đủ điều kiện hoàn")
 
     lim = ctx.tools.ops_limits()
-    # 1c. Lỗi thứ (trần + 1) của cùng một hãng trong ngày phải có người duyệt: chuyển TRƯỚC khi ghi tiền.
+    # 1c. [VÒNG 2 · thẻ S3] Vòng 1 chuyển CẢ ticket cho người khi hãng đã chạm trần lỗi/ngày, nên khách đủ điều kiện
+    #     (LogiX trả) cũng phải chờ người duyệt. Trần lỗi là chuyện giữa LogiX và HÃNG, không phải quyền lợi của KHÁCH:
+    #     tách hai việc. Khoản hoàn vẫn đi qua 1d/1e như mọi ticket; lỗi thứ (trần + 1) bị Cổng 2 chặn và để người ghi.
     max_strikes = lim.get("max_auto_strikes_per_carrier_per_day")
     if max_strikes is not None and H.carrier_at_fault(policy, parcel, f["delay"]):
         n = len(ctx.tools.fault_rows(carrier_id=parcel["carrier_id"]))
         if n >= max_strikes:
-            return Verdict.escalate(f"hãng {parcel['carrier_id']} đã có {n} lỗi tự động hôm nay "
-                                    f"(trần {max_strikes}): cần người duyệt trước khi hoàn và ghi lỗi")
+            ctx.log("carrier_strike_cap", carrier_id=parcel["carrier_id"], strikes=n, cap=max_strikes,
+                    note="hoàn cho khách bình thường; lỗi hãng để người ghi")
 
     # 1d. Vượt hạn mức tự động của chính sách hiệu lực → bắt buộc có phê duyệt hợp lệ của đúng ticket.
     approval = _valid_approval(ctx, action["ticket_id"], expected)
@@ -165,9 +167,14 @@ def _gate_fault(ctx, action):
 
 # ── Cổng 3 ───────────────────────────────────────────────────────────────────────────────────────────────────
 def _gate_notify(ctx, action):
+    # 3a. [VÒNG 2 · thẻ S3] Chỉ báo hãng khi kiện thật sự đã bị ghi lỗi (đã qua Cổng 2). Cổng 2 chặn lỗi (bão,
+    #     nguyên nhân trống, quá trần) mà tin vẫn đi thì hãng vẫn nhận "lỗi" không ai bên LogiX xác nhận.
+    payload = action.get("payload") or {}
+    parcel_id = payload.get("parcel_id")
+    if parcel_id and not ctx.tools.fault_rows(parcel_id=parcel_id):
+        return Verdict.deny(f"kiện {parcel_id} không có lỗi hãng được ghi: không gửi thông báo lỗi cho hãng")
     pol = _policy(ctx)
     allowed = set((pol or {}).get("carrier_notice_fields") or DEFAULT_NOTICE_FIELDS)
-    payload = action.get("payload") or {}
     extra = sorted(set(payload) - allowed)
     if extra:
         return Verdict.modify(f"chỉ gửi hãng các trường chính sách cho phép, bỏ {extra}",

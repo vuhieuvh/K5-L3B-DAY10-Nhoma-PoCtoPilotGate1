@@ -1,12 +1,17 @@
 {
-  "team": "",
-  "members": [],
-  "incident": "",
-  "decision_v1": "",
-  "decision_v2": "",
+  "team": "K5_L3B_Day10_Nhoma_PoC-to-Pilot_Gate1_student",
+  "members": [
+    "2A202603860-Vu_Xuan_Hieu-vuhieuvh",
+    "2A202603825-Nguyen_The_Bao-NTheBao",
+    "2A202603808-Nguyen_Thanh_Tung-thanhtung578804",
+    "2A202603865-Vu_Duy_Khanh-khanhduyvu1"
+  ],
+  "incident": "S3",
+  "decision_v1": "Tiếp tục",
+  "decision_v2": "Tiếp tục",
   "three_lines": {
-    "environment_assumption": "",
-    "reduce_or_prevent": "",
-    "measure_in_pilot": ""
+    "environment_assumption": "Bảng policies trong DB khớp đúng, đúng ngày với văn bản chính sách và phụ lục LogiX đã ký với hãng, và delay_cause do điểm phát / hãng nhập là trung thực; ngoài thực tế phụ lục do phòng kinh doanh ký còn bảng policies do người khác nhập tay (thẻ S3: cờ index_active không ai đổi ngày 01/12), còn delay_cause mùa bão bị bỏ trống và do chính bên bị phạt nhập.",
+    "reduce_or_prevent": "NGĂN với hai nhánh đã thấy trên trace: cổng ghim chính sách theo ngày (không đọc cờ index_active) và Cổng 2 chỉ cho ghi lỗi khi tracking ghi delay_cause thuộc fault_causes của chính sách hiệu lực, nên ca bão và ca trống nguyên nhân không thể thành lỗi hãng (35 → 0 lỗi oan); chỉ GIẢM ở nhánh dồn lỗi (vẫn cho 2 lỗi tự động/hãng/ngày) và ở nhánh delay_cause bị nhập sai là CARRIER, vì cổng tin DB, nhánh này chỉ có monitor max_faults_per_carrier_day và đối soát tuần phát hiện.",
+    "measure_in_pilot": "Đo lại tỉ lệ delay_cause trống và tỉ lệ ghi sai (đối chiếu với tin bão theo tỉnh và khiếu nại của hãng) theo từng hãng trong mùa bão, số lỗi tự động mỗi hãng mỗi ngày và trong 7 ngày so với ngưỡng đình chỉ, độ trễ từ ngày ký phụ lục tới ngày bảng policies được cập nhật, cùng tỉ lệ chuyển người, thời gian chờ và chi phí mỗi ticket thật với 1 người duyệt (mock hiện cho 0,083 và 4.405đ trên thẻ, 0,2273 và 4.456đ trên bộ nền)."
   }
 }
