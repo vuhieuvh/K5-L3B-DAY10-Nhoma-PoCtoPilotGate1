@@ -4,7 +4,7 @@
 
 - Tên nhóm (`TenNhom`, không dấu, không khoảng trắng): Nhoma
 - Lớp: `L3B`
-- Repo của bàn: `K5_L3B_Day10_Nhoma_PoC-to-Pilot_Gate1_student` (https://github.com/vuhieuvh/K5_L3B_Day10_Nhoma_PoC-to-Pilot_Gate1_student). Bàn giữ tên repo đã tạo từ đầu buổi; giá trị `team` trong Bản tiêu chí đã ký và `submission/submission.json` giống hệt tên này.
+- Repo của bàn: `K5-L3B-DAY10-Nhoma-PoCtoPilotGate1` (https://github.com/vuhieuvh/K5-L3B-DAY10-Nhoma-PoCtoPilotGate1). Repo được đổi sang đúng quy ước sau buổi đo; tên cũ là `K5_L3B_Day10_Nhoma_PoC-to-Pilot_Gate1_student`. Giá trị `team` trong Bản tiêu chí đã ký (và `submission/submission.json`, phải giống hệt bản ký) vẫn là tên cũ, vì tiêu chí đã ký lúc 15:21:00 và không được sửa sau khi ký.
 - Thẻ sự cố đã bốc (S1–S8): S3 · Hãng miền Tây bị phạt vì bão
 
 ## Thành viên
@@ -39,7 +39,7 @@ Trưởng nhóm, vai Sản phẩm và kinh doanh. Câu 1.x (Phiếu A: A1–A5, 
 
 ### Bằng chứng
 
-Commit ký `d6a3d28` (hash tiêu chí `6830c237`); commit `f40430a` (chốt vòng 1, quyết định v1); lần chạy `R-base-prepared-20261119-152604-2dbccd`, `R-S3-grade-20261119-170341-d3e3f6`; Phiếu A A1–A5, Phiếu B B3, B8, Phiếu C C3.5, C12.
+Commit ký `d6a3d28` (hash tiêu chí `6830c237`); commit `f40430a` (chốt vòng 1, quyết định v1); lần chạy `R-base-prepared-20261119-152604-2dbccd`, `R-S3-grade-20261119-173929-d3e3f6`; Phiếu A A1–A5, Phiếu B B3, B8, Phiếu C C3.5, C12.
 
 ### Exit ticket
 
@@ -98,7 +98,7 @@ Kỹ sư cổng, đo lường và giám sát. Chạy `lab10.eval`, `lab10.trace`
 
 ### Bằng chứng
 
-Lần chạy `R-base-before-20261119-152104-b45eeb`, `R-S3-prepared-20261119-164522-2dbccd`, `R-S3-after-20261119-164817-19bda3`, grade `R-S3-grade-20261119-170341-d3e3f6` (ô 6 monitor); Phiếu C C0, C2, C6, C8, C9.
+Lần chạy `R-base-before-20261119-152104-b45eeb`, `R-S3-prepared-20261119-164522-2dbccd`, `R-S3-after-20261119-164817-19bda3`, grade `R-S3-grade-20261119-173929-d3e3f6` (ô 6 monitor); Phiếu C C0, C2, C6, C8, C9.
 
 ### Exit ticket
 
