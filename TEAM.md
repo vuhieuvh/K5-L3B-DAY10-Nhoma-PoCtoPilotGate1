@@ -98,7 +98,7 @@ Kỹ sư cổng, đo lường và giám sát. Chạy `lab10.eval`, `lab10.trace`
 
 ### Bằng chứng
 
-Lần chạy `R-base-before-20261119-152104-b45eeb`, `R-S3-prepared-20261119-164522-2dbccd`, `R-S3-after-20261119-164817-19bda3`, grade `R-S3-grade-20261119-170341-d3e3f6` (ô 6 monitor ✅); Phiếu C C0, C2, C6, C8, C9.
+Lần chạy `R-base-before-20261119-152104-b45eeb`, `R-S3-prepared-20261119-164522-2dbccd`, `R-S3-after-20261119-164817-19bda3`, grade `R-S3-grade-20261119-170341-d3e3f6` (ô 6 monitor); Phiếu C C0, C2, C6, C8, C9.
 
 ### Exit ticket
 
