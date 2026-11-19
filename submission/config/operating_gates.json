@@ -1,0 +1,33 @@
+{
+  "_huong_dan": "Cổng kinh doanh, vận hành, pháp lý mà trợ lý PHẢI tuân theo. Bàn điền ở vòng 1, chốt bằng python3 -m lab10.checkpoint, rồi được sửa tiếp ở vòng 2. null = chưa đặt cổng này. Giải thích từng dòng: docs/guide.md, mục Cổng trong config (#ban-do).",
+  "business": {
+    "_ly_do": "Lý do từng số: Phiếu B mục B7.4.",
+    "daily_refund_cap_vnd": 1600000,
+    "cost_budget_per_ticket_vnd": 1500,
+    "pilot_scope": {"mode": "all", "warehouses": [], "percent": 100},
+    "roi_min": 0.5
+  },
+  "operations": {
+    "_ly_do": "Lý do từng số và runbook khớp các số này: Phiếu B mục B7.5, B7.6.",
+    "pic": "NV-TUNG",
+    "approver_id": "NV-HANH",
+    "reviewers_on_shift": 1,
+    "review_capacity_per_hour": 6,
+    "max_queue_wait_minutes": 45,
+    "stop_conditions": [
+      "Khi có 1 lỗi ghi oan cho hãng (lỗi không có delay_cause thuộc fault_causes trong tracking) thì NV-TUNG tắt file_carrier_fault trong 30 phút.",
+      "Khi có 1 tin gửi hãng chứa tên / số điện thoại / địa chỉ người nhận thì NV-TUNG tắt notify_carrier trong 30 phút.",
+      "Khi tổng tiền hoàn sai cộng dồn trong tuần vượt 200.000đ, hoặc tổng hoàn tự động trong ngày chạm 1.600.000đ, thì tắt issue_refund tự động, mọi ticket về làm tay.",
+      "Khi có 1 ca chờ người duyệt quá 60 phút (SLA) hai ngày liền thì thu hẹp pilot_scope về một kho cho tới khi có thêm người trực.",
+      "[Vòng 2 · S3] Ngày một phiên bản chính sách mới bắt đầu hiệu lực (effective_from = hôm nay), NV-TUNG đối chiếu chính sách trợ lý đang ghim với phụ lục đã ký với hãng trước 9:00 và báo vào kênh cảnh báo; chưa xác nhận thì tắt file_carrier_fault và notify_carrier, hoàn cho khách vẫn chạy.",
+      "[Vòng 2 · S3] Khi unverified_fault_proposal_rate > 0,10 trong ngày hoặc max_faults_per_carrier_day chạm 2 thì NV-TUNG đọc trace các lỗi đã ghi cho hãng đó trong 30 phút; có 1 lỗi không có delay_cause = CARRIER thì tắt file_carrier_fault và báo hãng gỡ lỗi."
+    ],
+    "alert_channel": "Nhóm Zalo 'LogiX Pilot Hoàn tiền' (NV-TUNG, NV-HANH, NV-OANH) + gọi điện NV-TUNG khi ĐỎ",
+    "decision_note": true,
+    "review_sampling_pct": 10
+  },
+  "legal": {
+    "pii_fields_blocked_to_third_party": ["recipient_contact", "customer_note"],
+    "carrier_fault_requires_recorded_cause": true
+  }
+}
