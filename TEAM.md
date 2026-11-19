@@ -13,9 +13,9 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; bàn 3 người th
 
 | STT | Họ và tên | MSSV | Vai | Trưởng nhóm |
 | --: | --------- | ---- | --- | :---------: |
-|   1 | Nguyễn Thanh Tùng | 2A202603808 | Sản phẩm và kinh doanh (Người 1) · GitHub `thanhtung578804` | ✓ |
+|   1 | Nguyễn Thanh Tùng | 2A202603808 | Vận hành và pháp lý (Người 3) · GitHub `thanhtung578804` | |
 |   2 | Nguyễn Thế Bảo | 2A202603825 | Kỹ sư cổng: viết và sửa cổng (Người 2) · GitHub `NTheBao` | |
-|   3 | Vũ Xuân Hiếu | 2A202603860 | Vận hành và pháp lý (Người 3) · GitHub `vuhieuvh` | |
+|   3 | Vũ Xuân Hiếu | 2A202603860 | Sản phẩm và kinh doanh (Người 1) · GitHub `vuhieuvh` | ✓ |
 |   4 | Vũ Duy Khánh | 2A202603865 | Kỹ sư cổng: đo lường và giám sát (Người 4) · GitHub `khanhduyvu1` | |
 
 Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên. *(Bàn ghi theo quy ước lớp: `"<MSHV>-<Họ_và_tên>-<github_account_name>"`.)*
@@ -28,22 +28,21 @@ Mỗi thành viên tự viết một mục bên dưới (chép mẫu, đổi ti�
 
 ### Phần việc phụ trách
 
-Trưởng nhóm, vai Sản phẩm và kinh doanh. Câu 1.x (Phiếu A: A1–A5, đặt và ký Bản tiêu chí chấp nhận `config/acceptance_criteria.json`), câu 2.3 (Phiếu B mục B3, bản đồ dữ liệu), cổng kinh doanh trong `config/operating_gates.json` mục `business`, quyết định Gate 1 v1 (B8) và v2 (Phiếu C mục C12), điều phối repo.
+Vận hành và pháp lý. Câu 2.10 (Phiếu B mục B5 checklist, B7.5–B7.6 runbook 1–3, giờ cao điểm), câu 3.7 (Phiếu C mục C10 risk register, C11 checklist và runbook 4–5). File `config/operating_gates.json` mục `operations`, `legal`; `submission/submission.json`.
 
 ### Đóng góp cụ thể
 
-- Đặt 5 ngưỡng bắt buộc, 3 ngưỡng `business_ops`, điều kiện dừng và `decision_rule` bốn dòng, ký trước lần đo đầu tiên.
-- Chọn trần tiền hoàn ngày `daily_refund_cap_vnd = 1.600.000` và ngân sách LLM 1.500đ/ticket.
-- Đọc bảng `policies` cho thẻ S3 (C3.5): `index_active` là bản sao không chủ, `fault_causes` đổi theo phiên bản.
-- Viết quyết định v1 "Tiếp tục có điều kiện" và v2 "Tiếp tục" dựa trên report ba mốc.
+- Điền PIC (NV-TUNG), người duyệt (NV-HANH), người nhận khiếu nại (NV-OANH), số người trực, thời gian chờ tối đa 45 phút, kiểm mẫu 10%, kênh báo tin, điều kiện dừng.
+- Cổng pháp lý: không gửi `recipient_contact`, `customer_note` cho hãng; ghi lỗi hãng phải có nguyên nhân trong tracking.
+- Vòng 2 (thẻ S3): thêm hai điều kiện dừng (đối chiếu chính sách với phụ lục ngày đổi phiên bản; ngưỡng của hai monitor mới), runbook 4–5, risk register về `delay_cause` mùa bão.
 
 ### Bằng chứng
 
-Commit ký `d6a3d28` (hash tiêu chí `6830c237`); commit `f40430a` (chốt vòng 1, quyết định v1); lần chạy `R-base-prepared-20261119-152604-2dbccd`, `R-S3-grade-20261119-170341-d3e3f6`; Phiếu A A1–A5, Phiếu B B3, B8, Phiếu C C3.5, C12.
+Lần chạy `R-S3-after-20261119-164843-d3e3f6` (config vòng 2); Phiếu B B5, B7.5, B7.6; Phiếu C C10, C11; `config/operating_gates.json` `stop_conditions` câu 5–6.
 
 ### Exit ticket
 
-Học được: quyết định Gate 1 "đạt" là quyết định khớp với số liệu và tiêu chí đã ký trước, không phải quyết định "đi tiếp"; ký trước khi đo để không dời cột gôn. Còn chưa chắc: ngưỡng 0 lỗi oan cho hãng có quá chặt khi chạy thật ở quy mô lớn hay không, và làm sao định lượng chi phí của việc chậm hoàn cho khách.
+Học được: sự cố S3 lộ ra qua khiếu nại của hãng chứ không qua số máy đo; runbook cần tín hiệu không cần nhãn. Còn chưa chắc: quy trình nhận phụ lục hợp đồng từ phòng kinh doanh sang người giữ cấu hình trợ lý sẽ chạy thế nào ngoài thực tế.
 
 ## NguyenTheBao-2A202603825
 
@@ -68,21 +67,22 @@ Học được: cổng chặn đúng tác hại vẫn có thể gây hại phụ
 
 ### Phần việc phụ trách
 
-Vận hành và pháp lý. Câu 2.10 (Phiếu B mục B5 checklist, B7.5–B7.6 runbook 1–3, giờ cao điểm), câu 3.7 (Phiếu C mục C10 risk register, C11 checklist và runbook 4–5). File `config/operating_gates.json` mục `operations`, `legal`; `submission/submission.json`.
+Trưởng nhóm, vai Sản phẩm và kinh doanh. Câu 1.x (Phiếu A: A1–A5, đặt và ký Bản tiêu chí chấp nhận `config/acceptance_criteria.json`), câu 2.3 (Phiếu B mục B3, bản đồ dữ liệu), cổng kinh doanh trong `config/operating_gates.json` mục `business`, quyết định Gate 1 v1 (B8) và v2 (Phiếu C mục C12), điều phối repo.
 
 ### Đóng góp cụ thể
 
-- Điền PIC (NV-TUNG), người duyệt (NV-HANH), người nhận khiếu nại (NV-OANH), số người trực, thời gian chờ tối đa 45 phút, kiểm mẫu 10%, kênh báo tin, điều kiện dừng.
-- Cổng pháp lý: không gửi `recipient_contact`, `customer_note` cho hãng; ghi lỗi hãng phải có nguyên nhân trong tracking.
-- Vòng 2 (thẻ S3): thêm hai điều kiện dừng (đối chiếu chính sách với phụ lục ngày đổi phiên bản; ngưỡng của hai monitor mới), runbook 4–5, risk register về `delay_cause` mùa bão.
+- Đặt 5 ngưỡng bắt buộc, 3 ngưỡng `business_ops`, điều kiện dừng và `decision_rule` bốn dòng, ký trước lần đo đầu tiên.
+- Chọn trần tiền hoàn ngày `daily_refund_cap_vnd = 1.600.000` và ngân sách LLM 1.500đ/ticket.
+- Đọc bảng `policies` cho thẻ S3 (C3.5): `index_active` là bản sao không chủ, `fault_causes` đổi theo phiên bản.
+- Viết quyết định v1 "Tiếp tục có điều kiện" và v2 "Tiếp tục" dựa trên report ba mốc.
 
 ### Bằng chứng
 
-Lần chạy `R-S3-after-20261119-164843-d3e3f6` (config vòng 2); Phiếu B B5, B7.5, B7.6; Phiếu C C10, C11; `config/operating_gates.json` `stop_conditions` câu 5–6.
+Commit ký `d6a3d28` (hash tiêu chí `6830c237`); commit `f40430a` (chốt vòng 1, quyết định v1); lần chạy `R-base-prepared-20261119-152604-2dbccd`, `R-S3-grade-20261119-170341-d3e3f6`; Phiếu A A1–A5, Phiếu B B3, B8, Phiếu C C3.5, C12.
 
 ### Exit ticket
 
-Học được: sự cố S3 lộ ra qua khiếu nại của hãng chứ không qua số máy đo; runbook cần tín hiệu không cần nhãn. Còn chưa chắc: quy trình nhận phụ lục hợp đồng từ phòng kinh doanh sang người giữ cấu hình trợ lý sẽ chạy thế nào ngoài thực tế.
+Học được: quyết định Gate 1 "đạt" là quyết định khớp với số liệu và tiêu chí đã ký trước, không phải quyết định "đi tiếp"; ký trước khi đo để không dời cột gôn. Còn chưa chắc: ngưỡng 0 lỗi oan cho hãng có quá chặt khi chạy thật ở quy mô lớn hay không, và làm sao định lượng chi phí của việc chậm hoàn cho khách.
 
 ## VuDuyKhanh-2A202603865
 

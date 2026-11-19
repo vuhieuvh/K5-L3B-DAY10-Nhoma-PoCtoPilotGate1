@@ -1,5 +1,5 @@
 {
- "collected_at": "2026-11-19T17:05:19",
+ "collected_at": "2026-11-19T17:11:52",
  "incident": "S3",
  "run_ids": {
   "base": "R-S3-before-20261119-170341-d3e3f6",
@@ -21,8 +21,8 @@
   "config/round1.lock": "d2478086182a4017683cb7a592cee329a70fb0a842aaa6986d7b05e2b9600878",
   "config/switches.json": "7f6b75433f65640f6610a7930ecefae27fc8b1891634803815ef48d9c4a0b457",
   "docs/form-a-criteria.md": "f99f3cf4ad8ceaa82f68dde0a8edec81d29521b0ed2f17d22c3316c5342c9b89",
-  "docs/form-b-evaluation-gates.md": "13b6316b387d50cbada5b8d2db2f114c9d1c7a9ec40e0fb95fd4759a8c7f7bf5",
-  "docs/form-c-incident.md": "b911d5c49c94e6d81b41e2901e55c9e7af7f1f8789df60ba7364136fae7a850b",
+  "docs/form-b-evaluation-gates.md": "e705339b6006cbd09df9690b240c8d39a732c95993bbe0eb730239ac2a828cad",
+  "docs/form-c-incident.md": "7e375bd1fa60f71d59c4349226ad0a5f8e34acc29243e347aa14a44c1e8cc64f",
   "runs/R-S3-after-20261119-170341-d3e3f6/report.json": "47d50e2424b675d598ece8c02fb25ce5c5367e379121e43197070e6098c13fa4",
   "runs/R-S3-before-20261119-170341-d3e3f6/report.json": "fdf52831e7ccf680a90a6f3c0bb7d949701be3d6fbc0e861e86f27542f8b90ad",
   "runs/R-S3-prepared-20261119-170341-d3e3f6/report.json": "56ca38032aa1546e0c776a045e8432930f5302900d86572538994d0051868b35",

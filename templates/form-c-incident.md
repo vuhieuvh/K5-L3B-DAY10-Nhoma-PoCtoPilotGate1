@@ -406,10 +406,10 @@ Ghi các dòng đổi sau sự cố. Mỗi dòng vẫn phải có một PIC có 
 | # nhóm | Trạng thái mới (Xong / Chưa / Không áp dụng) | Bằng chứng mới (mã lần chạy, mục phiếu, số trong report) | PIC |
 |---|---|---|---|
 | 1 Chất lượng | Xong | `R-S3-after-20261119-164843-d3e3f6`: pass_rate 1,0, pass_k 1,0, 0đ · 0 · 0 trên thẻ S3; `R-base-after-20261119-164843-d3e3f6`: bộ nền vẫn 1,0, không regression; C2 xếp loại 3 lỗi | Vũ Duy Khánh (Người 4 · Đo lường và giám sát) |
-| 2 Dữ liệu | Xong (có điều kiện) | C3.5: `index_active` là bản sao không chủ, `fault_causes` đổi theo phiên bản, `delay_cause` trống ≠ lỗi hãng; còn hở: `delay_cause` nhập sai (C4 dòng 4, C10) | Nguyễn Thanh Tùng (Người 1 · Sản phẩm và kinh doanh) |
-| 6 Chi phí | Xong | Thẻ S3: chi phí mỗi ticket 6.038đ (prepared) → 4.405đ (after), ROI 0,66 → 1,27, LLM tối đa 771đ | Nguyễn Thanh Tùng (Người 1 · Sản phẩm và kinh doanh) |
-| 7 Vận hành | Xong (trước là Chưa) | `monitors.py`: `unverified_fault_proposal_rate`, `max_faults_per_carrier_day` sáng đèn (grade ô 6 ✅); `stop_conditions` câu 5–6; runbook 4–5 dưới đây | Vũ Xuân Hiếu (Người 3 · Vận hành và pháp lý) |
-| 8 Con người, pháp lý | Xong (trước là Xong một phần) | Cổng 3a: không báo hãng khi không có lỗi được ghi; quy trình khiếu nại của hãng: NV-OANH huỷ lỗi oan, hoàn tiền phạt trong 24 giờ (runbook 4) | Vũ Xuân Hiếu (Người 3 · Vận hành và pháp lý) |
+| 2 Dữ liệu | Xong (có điều kiện) | C3.5: `index_active` là bản sao không chủ, `fault_causes` đổi theo phiên bản, `delay_cause` trống ≠ lỗi hãng; còn hở: `delay_cause` nhập sai (C4 dòng 4, C10) | Vũ Xuân Hiếu (Người 1 · Sản phẩm và kinh doanh) |
+| 6 Chi phí | Xong | Thẻ S3: chi phí mỗi ticket 6.038đ (prepared) → 4.405đ (after), ROI 0,66 → 1,27, LLM tối đa 771đ | Vũ Xuân Hiếu (Người 1 · Sản phẩm và kinh doanh) |
+| 7 Vận hành | Xong (trước là Chưa) | `monitors.py`: `unverified_fault_proposal_rate`, `max_faults_per_carrier_day` sáng đèn (grade ô 6 ✅); `stop_conditions` câu 5–6; runbook 4–5 dưới đây | Nguyễn Thanh Tùng (Người 3 · Vận hành và pháp lý) |
+| 8 Con người, pháp lý | Xong (trước là Xong một phần) | Cổng 3a: không báo hãng khi không có lỗi được ghi; quy trình khiếu nại của hãng: NV-OANH huỷ lỗi oan, hoàn tiền phạt trong 24 giờ (runbook 4) | Nguyễn Thanh Tùng (Người 3 · Vận hành và pháp lý) |
 | 4 Quyền hạn | Xong | Lỗi thứ 3+ của một hãng trong ngày: quyền ghi trả về NV-OANH (Cổng 2), khoản hoàn của khách không còn bị kẹt (Cổng 1c) | Nguyễn Thế Bảo (Người 2 · Viết và sửa cổng) |
 
 ### Runbook 4 · Sau sự cố trên thẻ (vòng 2)
@@ -456,7 +456,7 @@ Cột v1 nằm ở Phiếu B mục B8; không sửa cột đó.
 | Nếu Cải tiến thêm: giả thuyết cụ thể (nhánh nào của fault tree) + hạn | (không áp dụng; nhánh [4] "delay_cause nhập sai" đưa vào risk register C10 và điều kiện dừng, không chặn quyết định vì không có chỉ số an toàn nào > 0) |
 | Nếu Dừng: bài học ghi lại | (không áp dụng) |
 | Ngày quyết định lại (trừ khi Dừng) | `2026-12-09`: sau 7 ngày chạy thật đầu tiên dưới REFUND-v4, đọc `max_faults_per_carrier_day` và khiếu nại của hãng tuyến miền Tây; quyết định lại sớm hơn ngay khi có 1 lỗi oan hoặc 1 lần lộ dữ liệu (stop_conditions) |
-| PIC ký | NV-TUNG (PIC trợ lý) cùng Nguyễn Thanh Tùng (Người 1 · Sản phẩm và kinh doanh, trưởng nhóm), thay mặt bàn |
+| PIC ký | NV-TUNG (PIC trợ lý) cùng Vũ Xuân Hiếu (Người 1 · Sản phẩm và kinh doanh, trưởng nhóm), thay mặt bàn |
 
 **Chỉ ở v2**
 - Quyết định đổi hay giữ so với v1? Vì con số nào: **Giữ "Tiếp tục"**, nhưng bỏ chữ "có điều kiện" của v1. v1 chỉ có số trên bộ nền; v2 có thêm gói sự cố S3: lỗi oan 35 → 0, hoàn sai 900.000đ → 0, hoàn thiếu 667.000đ → 0, pass_rate 0,25 → 1,0, và sau vòng 2 tỉ lệ chuyển người 0,25 → 0,083, chi phí 6.038đ → 4.405đ.
