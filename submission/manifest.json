@@ -1,5 +1,5 @@
 {
- "collected_at": "2026-11-19T17:11:52",
+ "collected_at": "2026-11-19T17:14:41",
  "incident": "S3",
  "run_ids": {
   "base": "R-S3-before-20261119-170341-d3e3f6",
@@ -29,6 +29,6 @@
   "runs/grade-report.json": "599be8e9b0a68515ba7ea7a90615b832b492b34061e069c38fde931610ffc13d",
   "runs/grade-report.md": "4da38b3faad832f1c7271df0cb4aa123f05c5d95af269729d7c77191e4ecb0ea",
   "runs/journal.jsonl": "504e298978ece8acfdec3179a73b57fa38375893b81da26aac1ea232ebea0e3c",
-  "submission.json": "65f73ad60826bf4989cf3e0ef7a31e791c2d10bf178511b9325f2b7f63a6d229"
+  "submission.json": "ad299b413d1ddbd402978ecdd801265203cfc7b1a4e742aecbd3cb4f6ec6963f"
  }
 }
